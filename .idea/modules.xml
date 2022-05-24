@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Monitor/Monitor.iml" filepath="$PROJECT_DIR$/Monitor/Monitor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Sensor/Sensor.iml" filepath="$PROJECT_DIR$/Sensor/Sensor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SistemaCalidad/SistemaCalidad.iml" filepath="$PROJECT_DIR$/SistemaCalidad/SistemaCalidad.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SistemaFallasMonitor/SistemaFallasMonitor.iml" filepath="$PROJECT_DIR$/SistemaFallasMonitor/SistemaFallasMonitor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/proyecto-distribuidos-2210.iml" filepath="$PROJECT_DIR$/.idea/proyecto-distribuidos-2210.iml" />
+    </modules>
+  </component>
+</project>
