@@ -38,13 +38,14 @@ El anterior comando debe generar un nuevo directorio `target/` con el archivo ja
 
 ## Ejecución
 
-Los argumentos de un sensor son:
+Los argumentos de un monitor son:
 - Tipo de sensor ('OXIGENO', 'TEMPERATURA', 'PH')
 - Ruta al archivo de configuración. El programa viene con tres configuraciones por defecto, ubicadas en `src/main/resources/`:
-  - `configSensor1.txt` 0.6, 0.3, 0.1
-  - `configSensor2.txt` 0.8, 0.1, 0.1
-  - `configSensor3.txt` 0.4, 0.4, 0.2
-  Es posible cambiar estas configuraciones, o crear nuevos archivos de configuración. Sin embargo, es necesario volver a compilar el módulo para que se hagan disponibles.
+    - `configSensor1.txt` 0.6, 0.3, 0.1
+    - `configSensor2.txt` 0.8, 0.1, 0.1
+    - `configSensor3.txt` 0.4, 0.4, 0.2
+  
+    Es posible cambiar estas configuraciones, o crear nuevos archivos de configuración. Sin embargo, es necesario volver a compilar el módulo para que se hagan disponibles.
 - Intervalo t de generación de medidas en milisegundos (t > 0)
 
 Así se ejecutaría un sensor de OXIGENO con la configuración `configSensor1.txt` e intervalos de generación de 1 segundo:
