@@ -112,8 +112,7 @@ public class Monitor {
 				Medida medida = Medida.fromString(mensaje);
 				TipoMedida tipoMedida = this.clasificarMedida(medida);
 
-				System.out.println(mensaje);
-				System.out.println("La medida es: " + tipoMedida.toString());
+				System.out.println(medida.tabular(2) + " -> " + tipoMedida.toString());
 
 				// Enviar la medida al sistema de calidad si está fuera de rango
 				if (tipoMedida == TipoMedida.FUERA) {
@@ -121,7 +120,7 @@ public class Monitor {
 				}
 				// Registrar la medida en la base de datos si no es incorrecta
 				if (tipoMedida != TipoMedida.INCORRECTO) {
-					bd.println(mensaje);
+					bd.println(medida.tabular(2));
 					bd.flush();
 				}
 			}

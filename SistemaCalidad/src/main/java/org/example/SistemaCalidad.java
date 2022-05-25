@@ -68,7 +68,8 @@ public class SistemaCalidad {
 			String mensaje;
 			while (!Thread.currentThread().isInterrupted()) {
 				mensaje = pull.recvStr();
-				System.out.println("ALERTA: " + mensaje);
+				Medida medida = Medida.fromString(mensaje);
+				System.out.println("ALERTA: " + medida.tabular(2));
 			}
 			pull.close();
 		}
