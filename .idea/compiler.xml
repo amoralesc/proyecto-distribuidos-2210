@@ -14,7 +14,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Monitor" target="11" />
-      <module name="Sensor" target="11" />
+      <module name="Sensor" target="1.8" />
       <module name="SistemaCalidad" target="11" />
       <module name="SistemaFallasMonitor" target="11" />
     </bytecodeTargetLevel>
