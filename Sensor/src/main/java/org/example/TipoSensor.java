@@ -22,23 +22,23 @@ public enum TipoSensor {
 				this.max = 11.0F;
 				this.tema = "oxigeno";
 				this.primerPuerto = 5560;
-				this.ultimoPuerto = 5579;
+				this.ultimoPuerto = 5659;
 				break;
 			case "TEMPERATURA":
 				this.unidadMedida = "F";
 				this.min = 68.0F;
 				this.max = 89.0F;
 				this.tema = "temperatura";
-				this.primerPuerto = 5580;
-				this.ultimoPuerto = 5599;
+				this.primerPuerto = 5660;
+				this.ultimoPuerto = 5759;
 				break;
 			case "PH":
 				this.unidadMedida = "ph";
 				this.min = 6.0F;
 				this.max = 8.0F;
 				this.tema = "ph";
-				this.primerPuerto = 5600;
-				this.ultimoPuerto = 5619;
+				this.primerPuerto = 5760;
+				this.ultimoPuerto = 5859;
 				break;
 			default:
 				throw new IllegalArgumentException("Tipo de sensor no reconocido");

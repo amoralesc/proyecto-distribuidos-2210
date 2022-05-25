@@ -8,6 +8,9 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @SuppressWarnings("unused")
 public class Monitor {
@@ -105,6 +108,8 @@ public class Monitor {
 
 			// El monitor empieza a esperar medidas de los sensores mientras no se interrumpa el proceso
 			String mensaje;
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd/HH:mm:ss.SSS");
+			LocalDateTime now, fechaMedida;
 			while (!Thread.currentThread().isInterrupted()) {
 				subscriber.recvStr();           // Tema (tipo de medida)
 				mensaje = subscriber.recvStr(); // Mensaje (medida)
@@ -112,7 +117,16 @@ public class Monitor {
 				Medida medida = Medida.fromString(mensaje);
 				TipoMedida tipoMedida = this.clasificarMedida(medida);
 
-				System.out.println(medida.tabular(2) + " -> " + tipoMedida.toString());
+				// Fecha y hora de recepción de la medida
+				now = LocalDateTime.now();
+				String fechaStr = dtf.format(now);
+				// Fecha y hora de la medida
+				fechaMedida = LocalDateTime.parse(medida.getFecha(), dtf);
+
+				// Calcular diferencias de tiempo
+				Duration dif = Duration.between(fechaMedida, now);
+
+				System.out.println(dif.toMillis() + "\t " + medida.tabular(2) + " -> " + tipoMedida.toString());
 
 				// Enviar la medida al sistema de calidad si está fuera de rango
 				if (tipoMedida == TipoMedida.FUERA) {
@@ -120,7 +134,7 @@ public class Monitor {
 				}
 				// Registrar la medida en la base de datos si no es incorrecta
 				if (tipoMedida != TipoMedida.INCORRECTO) {
-					bd.println(medida.tabular(2));
+					bd.println(fechaStr + " " + dif.toMillis() + " " + medida.tabular(2));
 					bd.flush();
 				}
 			}
