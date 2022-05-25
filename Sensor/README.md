@@ -11,13 +11,13 @@ Se pueden ejecutar hasta 10 sensores de un mismo tipo, para un total de 30 posib
 
 La ejecución se realiza mediante la terminal (Linux/MacOS) o el PowerShell (Windows).
 
-- Java SDK 11 o superior
+- Java SDK 8 o superior
 - Maven 3.5.0 o superior
 
 Los comandos de Java y Maven deben estar en el PATH del sistema. Para verificar si están instalados, ejecute el siguiente comando:
 
 ```bash
-# Debe arrojar un versión 11 o superior
+# Debe arrojar un versión 1.8 o superior
 java -version
 ```
 
