@@ -13,6 +13,7 @@ import java.util.Scanner;
 
 @SuppressWarnings("unused")
 public class Sensor {
+	private String nombreSensor;
 	private TipoSensor tipoSensor;
 	private float[] probabilidadMedida = {0, 0, 0};
 	private long intervalo;
@@ -29,6 +30,14 @@ public class Sensor {
 
 	public void setTipoSensor(TipoSensor tipoSensor) {
 		this.tipoSensor = tipoSensor;
+	}
+
+	public String getNombreSensor() {
+		return nombreSensor;
+	}
+
+	public void setNombreSensor(String nombreSensor) {
+		this.nombreSensor = nombreSensor;
 	}
 
 	public float[] getProbabilidadMedida() {
@@ -117,7 +126,7 @@ public class Sensor {
 		// Determinar el tiempo actual
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd/HH:mm:ss.SSS");
 		LocalDateTime now = LocalDateTime.now();
-		return new Medida(this.tipoSensor.sensor, dtf.format(now), valor, this.tipoSensor.unidadMedida);
+		return new Medida(this.tipoSensor.sensor, this.nombreSensor, dtf.format(now), valor, this.tipoSensor.unidadMedida);
 	}
 
 	/**
@@ -133,7 +142,8 @@ public class Sensor {
 
 			// Buscar un puerto disponible y hacer un bind a este
 			boolean encuentraPuerto = false;
-			for (int i = this.getTipoSensor().primerPuerto; i < this.getTipoSensor().ultimoPuerto; i++) {
+			for (int i = this.getTipoSensor().primerPuerto; i <= this.getTipoSensor().ultimoPuerto; i++) {
+				this.setNombreSensor(String.valueOf(i));
 				try {
 					publisher.bind(String.format("tcp://*:%d", i));
 					System.out.printf("\nEl sensor ha hecho bind al puerto: %d%n", i);
