@@ -8,13 +8,13 @@ El proyecto implementa un sistema con tolerancia a fallas de los monitores, dond
 
 La ejecución se realiza mediante la terminal (Linux/MacOS) o el PowerShell (Windows).
 
-- Java SDK 8 o superior
+- Java SDK 11 o superior
 - Maven 3.5.0 o superior
 
 Los comandos de Java y Maven deben estar en el PATH del sistema. Para verificar si están instalados, ejecute el siguiente comando:
 
 ```bash
-# Debe arrojar un versión 1.8 o superior
+# Debe arrojar una versión 11 o superior
 java -version
 ```
 
@@ -49,4 +49,22 @@ Así se ejecutaría el sistema que utiliza el jar de monitores en la ruta defaul
 
 ```bash
 java -jar target/SistemaFallasMonitor-1.0-SNAPSHOT.jar ../Monitor/target/Monitor-1.0-SNAPSHOT.jar localhost localhost bd_oxigeno.txt bd_temperatura.txt bd_ph.txt
+```
+
+## Notas después de ejecutar
+
+Cabe resaltar que la ejecución de este módulo crea los tres procesos monitores en la máquina, más no es posible ver en tiempo real las medidas en pantalla, ya que no hay una terminal corriendo los monitores.
+
+Es posible ver los cambios en los archivos txt de bases de datos en tiempo real mediante el comando `tail -f`.
+
+Así se verían los cambios en tiempo real sobre el archivo de base de datos de OXIGENO `bd_oxigeno.txt` creado anteriormente:
+
+```bash
+tail -f bd_oxigeno.txt
+```
+
+Después de la ejecución, en pantalla se ven los PID's de los procesos monitores. Es posible matar uno de estos procesos para que el sistema de fallas lo reemplace por otro nuevo.
+
+```bash
+sudo kill <pid>
 ```

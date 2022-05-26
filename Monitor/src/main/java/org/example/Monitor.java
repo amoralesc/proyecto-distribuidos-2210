@@ -105,23 +105,12 @@ public class Monitor {
 
 			// El monitor empieza a esperar medidas de los sensores mientras no se interrumpa el proceso
 			String mensaje;
-			//DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd/HH:mm:ss.SSS");
-			//LocalDateTime now, fechaMedida;
 			while (!Thread.currentThread().isInterrupted()) {
 				subscriber.recvStr();           // Tema (tipo de medida)
 				mensaje = subscriber.recvStr(); // Mensaje (medida)
 
 				Medida medida = Medida.fromString(mensaje);
 				TipoMedida tipoMedida = this.clasificarMedida(medida);
-
-				// Fecha y hora de recepción de la medida
-				//now = LocalDateTime.now();
-				//String fechaStr = dtf.format(now);
-				// Fecha y hora de la medida
-				//fechaMedida = LocalDateTime.parse(medida.getFecha(), dtf);
-
-				// Calcular diferencias de tiempo
-				//Duration dif = Duration.between(fechaMedida, now);
 
 				System.out.println(medida.tabular(2) + " -> " + tipoMedida.toString());
 
